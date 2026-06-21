@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>开云 · 查询与延伸</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f9fbfe;
+            color: #1e2f3d;
+            line-height: 1.6;
+            padding: 0 1rem;
+        }
+
+        .container {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 2.5rem 0 4rem;
+        }
+
+        /* hero */
+        .hero {
+            margin-bottom: 4rem;
+            padding: 2.5rem 0 2rem;
+            border-bottom: 2px solid #d6e6f0;
+        }
+
+        .hero h1 {
+            font-size: 2.4rem;
+            font-weight: 550;
+            letter-spacing: -0.02em;
+            color: #0b2a3b;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 span {
+            display: inline-block;
+            background: #d3eaf0;
+            padding: 0 0.4rem;
+            border-radius: 6px;
+            color: #155e6b;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 680px;
+            color: #2d4a5a;
+            margin-bottom: 0.6rem;
+        }
+
+        .hero .tagline {
+            display: inline-block;
+            background: #e1f0f5;
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            color: #166b78;
+            margin-top: 0.5rem;
+        }
+
+        /* 网格卡片——优势 / 场景区 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .card {
+            background: white;
+            border-radius: 24px;
+            padding: 1.8rem 1.5rem;
+            box-shadow: 0 4px 12px rgba(0, 40, 50, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+            border: 1px solid #e4eef5;
+            transition: all 0.2s ease;
+        }
+
+        .card:hover {
+            border-color: #9fc7d6;
+            box-shadow: 0 8px 24px rgba(19, 105, 120, 0.08);
+            transform: translateY(-2px);
+        }
+
+        .card .emoji-icon {
+            font-size: 1.8rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            font-weight: 550;
+            color: #0a3645;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.01em;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: #2c4c5c;
+        }
+
+        .card .small-meta {
+            display: inline-block;
+            margin-top: 0.8rem;
+            font-size: 0.8rem;
+            background: #e5f0f5;
+            padding: 0.1rem 0.6rem;
+            border-radius: 30px;
+            color: #1b5f6b;
+        }
+
+        /* 说明区——自然段落 */
+        .explain-section {
+            background: white;
+            border-radius: 28px;
+            padding: 2rem 2.2rem;
+            margin: 2.5rem 0;
+            border: 1px solid #dceaf1;
+            box-shadow: 0 2px 10px rgba(0, 30, 40, 0.02);
+        }
+
+        .explain-section h2 {
+            font-size: 1.6rem;
+            font-weight: 520;
+            color: #0d3c4a;
+            margin-bottom: 1.2rem;
+            border-left: 5px solid #5babbd;
+            padding-left: 1rem;
+        }
+
+        .explain-section p {
+            margin-bottom: 1rem;
+            color: #1f3f4f;
+            max-width: 780px;
+        }
+
+        .explain-section .highlight {
+            background: #e7f3f8;
+            padding: 0.1rem 0.3rem;
+            border-radius: 6px;
+            color: #106370;
+        }
+
+        /* FAQ 摘要 */
+        .faq-summary {
+            margin: 3rem 0 2.5rem;
+            padding: 0 0.2rem;
+        }
+
+        .faq-summary h2 {
+            font-size: 1.5rem;
+            font-weight: 520;
+            color: #0d3c4a;
+            margin-bottom: 1.2rem;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 18px;
+            padding: 1.2rem 1.6rem;
+            margin-bottom: 0.9rem;
+            border: 1px solid #deeef5;
+            transition: 0.1s;
+        }
+
+        .faq-item strong {
+            display: block;
+            font-weight: 550;
+            color: #0b3747;
+            margin-bottom: 0.3rem;
+            font-size: 1.05rem;
+        }
+
+        .faq-item p {
+            color: #2d5365;
+            font-size: 0.95rem;
+        }
+
+        .faq-item .faq-tag {
+            display: inline-block;
+            background: #c5dfea;
+            font-size: 0.7rem;
+            padding: 0.1rem 0.6rem;
+            border-radius: 40px;
+            color: #115d6c;
+            margin-right: 0.4rem;
+        }
+
+        /* 底部链接区域 */
+        .footer-links {
+            text-align: center;
+            padding: 2rem 0 1rem;
+            border-top: 1px solid #d4e2ec;
+            margin-top: 2rem;
+        }
+
+        .footer-links p {
+            font-size: 0.95rem;
+            color: #2e5567;
+            margin-bottom: 0.4rem;
+        }
+
+        .footer-links a {
+            color: #1a6b7a;
+            text-decoration: none;
+            border-bottom: 1px dashed #83b3c4;
+            transition: 0.15s;
+        }
+
+        .footer-links a:hover {
+            color: #0f505e;
+            border-bottom: 1px solid #0f505e;
+        }
+
+        .inline-link {
+            color: #1a7585;
+            text-decoration: none;
+            font-weight: 470;
+            border-bottom: 1px solid #b1d3df;
+            transition: 0.1s;
+        }
+
+        .inline-link:hover {
+            color: #0e5360;
+            border-bottom-color: #207a8a;
+        }
+
+        /* 响应式 */
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .card-grid {
+                gap: 1rem;
+            }
+            .card {
+                padding: 1.5rem 1.2rem;
+            }
+            .explain-section {
+                padding: 1.5rem 1.2rem;
+            }
+            .faq-item {
+                padding: 1rem 1.2rem;
+            }
+            .container {
+                padding: 1.5rem 0 3rem;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- hero -->
+    <div class="hero">
+        <h1>查询、对照与<br>延伸阅读 · <span>开云</span></h1>
+        <p>一处在日常信息流中帮助梳理关键词、追溯上下文、整理对照资料的轻量方式。不追求大而全，更在意每次查阅都有所得。</p>
+        <div class="tagline">📋 围绕内容线索的框架</div>
+    </div>
+
+    <!-- 网格卡片——优势区域 -->
+    <div class="card-grid">
+        <div class="card">
+            <div class="emoji-icon">🔍</div>
+            <h3>条目对照</h3>
+            <p>在分散的资料间建立参照，对比不同来源的表述，辅助判断与筛选。适合日常信息整理场景。</p>
+            <span class="small-meta">归纳 · 比较</span>
+        </div>
+        <div class="card">
+            <div class="emoji-icon">🧩</div>
+            <h3>延伸脉络</h3>
+            <p>从一个词或一段话出发，沿着关联线索一点点展开，看到更多上下文与可能的解释方向。</p>
+            <span class="small-meta">关联 · 延展</span>
+        </div>
+        <div class="card">
+            <div class="emoji-icon">🌱</div>
+            <h3>阅读备忘</h3>
+            <p>记录阅读中的关键节点与模糊之处，形成可回溯的个人笔记，方便日后复习或再次查询。</p>
+            <span class="small-meta">记录 · 回顾</span>
+        </div>
+        <div class="card">
+            <div class="emoji-icon">📎</div>
+            <h3>快速定位</h3>
+            <p>在信息片段中快速定位核心概念，减少反复检索的时间，让查阅过程更加聚焦。</p>
+            <span class="small-meta">聚焦 · 索引</span>
+        </div>
+    </div>
+
+    <!-- 说明区：延伸阅读视角 -->
+    <div class="explain-section">
+        <h2>从日常查询到延伸阅读</h2>
+        <p>很多时候，查询不只是为了找到孤立答案，而是在过程中看见概念之间的连接。比如查找某个术语，顺便发现它背后的讨论脉络、不同用法以及相关案例。这种非线性的阅读方式，恰好是 <span class="highlight">开云</span> 所侧重的方向。</p>
+        <p>我们不强调工具本身，而是希望提供一个让信息和想法能够自然对照、延伸的土壤。你可以把它当作一个辅助性的参照面，在浏览、整理、回顾时找到更清晰的立足点。页面结构围绕日常使用场景来设计，没有繁杂的步骤，也不预设标准流程。</p>
+        <p>如果你恰好也在寻找这样一种方式——既保留查询的实用性，又留有延伸的空间，或许可以试试看。更多内容与功能细节，可以在 <a href="https://main-m-ky.com" class="inline-link">开云</a> 的页面中进一步了解。</p>
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <div class="faq-summary">
+        <h2>FAQ 摘要 · 一些常见疑问</h2>
+        <div class="faq-item">
+            <strong><span class="faq-tag">场景</span> 适合用来做什么类型的查询？</strong>
+            <p>偏向于知识梳理、概念对照、延伸阅读。无论是日常读到的某个观点，还是对某个话题的碎片记录，都可以借助这种框架来组织线索。</p>
+        </div>
+        <div class="faq-item">
+            <strong><span class="faq-tag">使用</span> 需要注册或下载吗？</strong>
+            <p>不需要额外注册，页面本身基于简洁的访问逻辑设计。直接通过浏览器打开即可使用，没有复杂的安装或配置过程。</p>
+        </div>
+        <div class="faq-item">
+            <strong><span class="faq-tag">内容</span> 信息来源是哪里？</strong>
+            <p>内容均基于公开资料与用户自整理，不涉及数据采集或定向推送。页面只提供查询与对照的框架，不对信息真实性做额外承诺。</p>
+        </div>
+        <div class="faq-item">
+            <strong><span class="faq-tag">延伸</span> 延伸阅读的方向如何确定？</strong>
+            <p>通常由关键词的关联性自然发散，也可以由使用者自己选择线索。没有固定算法或推荐逻辑，更多是手动梳理的自由度。</p>
+        </div>
+    </div>
+
+    <!-- 底部链接 -->
+    <div class="footer-links">
+        <p>更多查询与延伸方式，可参考 <a href="https://main-m-ky.com">开云</a> 上的内容框架。</p>
+        <p style="font-size: 0.85rem; color: #476b7a; margin-top: 0.6rem;">基于日常整理与阅读场景 · 保持克制</p>
+    </div>
+
+</div>
+</body>
+</html>
